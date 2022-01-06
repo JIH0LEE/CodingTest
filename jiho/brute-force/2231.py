@@ -8,7 +8,6 @@ for i in range(1, n):
     sum = i
     k = i
     while True:
-
         sum += k % 10
         k = k//10
         if k == 0:

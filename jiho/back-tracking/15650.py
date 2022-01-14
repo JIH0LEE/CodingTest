@@ -29,7 +29,7 @@ def solve(cnt, idx):
         visit[i] = True
         result.append(i+1)
         solve(cnt+1, i+1)
-        visit[i] = False
+        visit[i] = False ""
         result.pop()
 
 

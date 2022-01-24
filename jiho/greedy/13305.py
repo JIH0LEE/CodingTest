@@ -1,18 +1,15 @@
 # 주유소
-# 아마 시간 초과 때문에 58점
+
 import sys
 input = sys.stdin.readline
 n = int(input())
 cost = list(map(int, input().split()))
 price = list(map(int, input().split()))
-final = n
+min_price=price[0]
 result = 0
-while True:
-    if final == 0:
-        break
-    min_price = min(price[:final])
-    temp = price.index(min_price)
-    result = result + min_price*sum(cost[temp: final])
-    final = temp
+for i in range(n-1):
+    if price[i]<min_price:
+        min_price=price[i]
+    result+=min_price*cost[i]
 
 print(result)

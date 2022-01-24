@@ -1,4 +1,5 @@
 # 검문
+# 시간 초과 
 import sys
 input = sys.stdin.readline
 n = int(input())
@@ -6,11 +7,14 @@ inputs = []
 result = []
 for i in range(n):
     inputs.append(int(input()))
-max_value = max(inputs)
-for i in range(2, max_value):
-    temp = inputs[0] % i
+
+inputs.sort()
+min1=inputs[0]
+min2=inputs[1]
+for i in range(2, min2+1):
+    temp = min1 % i
     flag = True
-    for elem in inputs:
+    for elem in inputs[1:]:
         if elem % i != temp:
             flag = False
             break

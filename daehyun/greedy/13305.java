@@ -9,7 +9,7 @@ public class Main {
         long[] distance = new long[N-1];
         long[] price = new long[N];
         String[] str;
-        long min = 9999, sum=0;
+        long min = 1000000000, sum=0;
 
         str = br.readLine().split(" ");
         for (int i=0;i<N-1;i++) {

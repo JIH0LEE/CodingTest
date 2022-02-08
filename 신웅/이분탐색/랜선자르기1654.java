@@ -1,4 +1,4 @@
-package 분할정복;
+package 이분탐색;
 import java.io.*;
 import java.util.StringTokenizer;
 

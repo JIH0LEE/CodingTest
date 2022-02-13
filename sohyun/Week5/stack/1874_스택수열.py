@@ -2,7 +2,7 @@ n = int(input())
 count = 0
 stack = []
 res = []
-# impossible = True
+impossible = True
 
 for i in range(0, n):
     s = int(input())
@@ -15,11 +15,11 @@ for i in range(0, n):
     if s == stack[-1]:
         stack.pop()
         res.append("-")
-    # else:
-    #     impossible = False
-    #     exit(0)
+    else:
+        impossible = False
+        break
 
-# if impossible == False:
-#     print("NO")
-# else:
-print("\n".join(res))
+if impossible == False:
+    print("NO")
+else:
+    print("\n".join(res))

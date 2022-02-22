@@ -5,6 +5,7 @@ input=sys.stdin.readline
 heap=[]
 n=int(input())
 result=[]
+
 for i in range(n):
     x=int(input())
     if not x:

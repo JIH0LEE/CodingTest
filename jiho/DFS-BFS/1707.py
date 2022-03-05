@@ -1,30 +1,34 @@
 # 이분 그래프
-import sys
 from collections import deque
+import sys
 input = sys.stdin.readline
 k = int(input())
-for _ in range(k):
+def bfs(start):
+    bi[start] = 1
+    q = deque()
+    q.append(start)
+    while q:
+        a = q.popleft()
+        for i in s[a]:
+            if bi[i] == 0:
+                bi[i] = -bi[a]
+                q.append(i)
+            else:
+                if bi[i] == bi[a]:
+                    return False
+    return True
+for i in range(k):
     v, e = map(int, input().split())
-    graph = dict()
-    not_visited = set([i+1 for i in range(v)])
-    for i in range(v):
-        graph[i+1] = set()
-    for i in range(e):
+    isTrue = True
+    s = [[] for i in range(v + 1)]
+    bi = [0 for i in range(v + 1)]
+    for j in range(e):
         a, b = map(int, input().split())
-        graph[a].add(b)
-        graph[b].add(a)
-
-    count = 0
-    print(not_visited)
-    while not_visited:
-        count += 1
-        queue = deque([list(not_visited)[0]])
-        print(queue)
-        not_visited -= set([list(not_visited)[0]])
-        print(not_visited)
-        while queue:
-            target = queue.popleft()
-            queue.extend(list(graph[target] & not_visited))
-            not_visited -= graph[target]
-        print(not_visited)
-    print("answer:", count)
+        s[a].append(b)
+        s[b].append(a)
+    for l in range(1, v + 1):
+        if bi[l] == 0:
+            if not bfs(l):
+                isTrue = False
+                break
+    print("YES"if isTrue else "NO")

@@ -1,7 +1,6 @@
 # 동전 1
 import sys
 input = sys.stdin.readline
-
 n, k = map(int, input().split())
 coins = []
 dp = [0 for i in range(k + 1)]

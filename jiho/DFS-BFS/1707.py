@@ -3,6 +3,8 @@ from collections import deque
 import sys
 input = sys.stdin.readline
 k = int(input())
+
+
 def bfs(start):
     bi[start] = 1
     q = deque()
@@ -17,6 +19,8 @@ def bfs(start):
                 if bi[i] == bi[a]:
                     return False
     return True
+
+
 for i in range(k):
     v, e = map(int, input().split())
     isTrue = True

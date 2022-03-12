@@ -52,7 +52,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] str = br.readLine().split(" ");
         int[] must = new int[4];
-        int sum = 0;
+        int sum1 = 0, sum2 = 0;
         int N = Integer.parseInt(str[0]);
         int E = Integer.parseInt(str[1]);
         list = new ArrayList[N+1];
@@ -70,23 +70,33 @@ public class Main {
         }
         must[0] = 1; must[3] = N;
         str = br.readLine().split(" ");
-        if (Integer.parseInt(str[0]) < Integer.parseInt(str[1])) {
-            must[1] = Integer.parseInt(str[0]);
-            must[2] = Integer.parseInt(str[1]);
-        } else {
-            must[1] = Integer.parseInt(str[1]);
-            must[2] = Integer.parseInt(str[0]);
-        }
+        must[1] = Integer.parseInt(str[0]);
+        must[2] = Integer.parseInt(str[1]);
         for (int i=0;i<3;i++) {
             Arrays.fill(distance, INF);
             distance[must[i]] = 0;
             dijkstra(must[i]);
             if (distance[must[i+1]]==INF) {
-                sum = -1;
+                sum1 = -1;
                 break;
-            } else sum += distance[must[i+1]];
+            } else sum1 += distance[must[i+1]];
         }
-        System.out.println(sum);
+
+        must[1] = Integer.parseInt(str[1]);
+        must[2] = Integer.parseInt(str[0]);
+        for (int i=0;i<3;i++) {
+            Arrays.fill(distance, INF);
+            distance[must[i]] = 0;
+            dijkstra(must[i]);
+            if (distance[must[i+1]]==INF) {
+                sum2 = -1;
+                break;
+            } else sum2 += distance[must[i+1]];
+        }
+
+        if (sum1==-1 || sum2==-1) {
+            System.out.println(sum1>=sum2?sum1:sum2);
+        } else System.out.println(sum1<=sum2?sum1:sum2);
     }
 }
 
